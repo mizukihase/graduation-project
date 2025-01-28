@@ -133,3 +133,6 @@
   ユーザー登録した内容の関係性が高い　→　点数が高い
   作品の評価が高い　→　オススメが多い
   [参考資料](https://qiita.com/pham_thanh_thuong/items/a1404790ca6e967b5c7b)
+
+### 画面遷移図
+Figma：https://www.figma.com/design/EbUnbliHH4YQ84JbFlTLz7/%E5%8D%92%E6%A5%AD%E5%88%B6%E4%BD%9C?node-id=0-1&p=f&t=l6UqjwaJEUHpRZzf-0
