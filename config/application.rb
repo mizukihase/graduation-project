@@ -6,6 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# .env ファイルの自動読み込み
+Dotenv::Railtie.load if defined?(Dotenv)
 module Myapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -23,5 +25,7 @@ module Myapp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    # lib 配下を自動読み込み対象に追加
+    config.autoload_paths += %W[#{config.root}/lib]
   end
 end
