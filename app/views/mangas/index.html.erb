@@ -1,0 +1,14 @@
+<h1>漫画一覧</h1>
+<ul>
+  <% @mangas.each do |manga| %>
+    <li>
+      <h3><%= manga.title %></h3>
+      <p><%= manga.author %></p>
+      <% if manga.image_url.present? %>
+        <img src="<%= manga.image_url %>" alt="<%= manga.title %>の表紙" />
+      <% else %>
+        <p>画像がありません</p>
+    <% end %>
+    </li>
+  <% end %>
+</ul>
