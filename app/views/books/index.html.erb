@@ -1,0 +1,14 @@
+<h1>本一覧</h1>
+<ul>
+  <% @books.each do |book| %>
+    <li>
+      <h3><%= book.title %></h3>
+      <p><%= book.author %></p>
+      <% if book.image_url.present? %>
+        <img src="<%= book.image_url %>" alt="<%= book.title %>の表紙" />
+      <% else %>
+        <p>画像がありません</p>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
