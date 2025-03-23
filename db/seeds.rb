@@ -7,3 +7,15 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+book_category = Category.find_or_create_by!(name: "本")
+manga_category = Category.find_or_create_by!(name: "漫画")
+
+# 本のジャンル
+[ "推理小説", "SF", "ファンタジー", "恋愛小説", "歴史" ].each do |genre_name|
+  Genre.find_or_create_by!(name: genre_name, category: book_category)
+end
+
+# 漫画のジャンル
+[ "学園漫画", "SF漫画", "恋愛漫画", "ギャグ", "スポーツ漫画" ].each do |genre_name|
+  Genre.find_or_create_by!(name: genre_name, category: manga_category)
+end

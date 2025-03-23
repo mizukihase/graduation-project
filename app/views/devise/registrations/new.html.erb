@@ -36,6 +36,16 @@
     <%= f.text_field :gender %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :genre_ids, "興味のあるジャンルを選択" %><br />
+    <% Genre.includes(:category).group_by(&:category).each do |category, genres| %>
+      <div class="category-group">
+        <strong><%= category.name %></strong>
+        <%= f.collection_select :genre_ids, genres.reject { |g| g.id.blank? }, :id, :name, {}, { multiple: true, class: "form-control" } %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
