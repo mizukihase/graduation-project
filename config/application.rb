@@ -7,7 +7,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 # .env ファイルの自動読み込み
-Dotenv::Railtie.load if defined?(Dotenv)
+Dotenv::Rails.load if defined?(Dotenv)
 module Myapp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

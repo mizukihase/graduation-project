@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Defines the root path route ("/")
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
   # TOPページを top#index に設定
   root "top#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
