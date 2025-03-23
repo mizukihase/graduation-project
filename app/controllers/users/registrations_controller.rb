@@ -1,14 +1,18 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super do |resource|
       if resource.persisted?
         if params[:user][:genre_ids].present?
-          genre_ids = params[:user][:genre_ids]
+          genre_ids = params[:user][:genre_ids].reject(&:blank?)
           resource.genres = Genre.find(genre_ids)
         end
-        generate_recommendations(resource)
+        RecommendationService.new(resource).generate_recommendations
       end
     end
+  end
+
+  def after_sign_up_path_for(resource)
+    recommended_works_path
   end
 
   private
