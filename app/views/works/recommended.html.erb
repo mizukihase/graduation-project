@@ -1,1 +1,21 @@
 <h1>おすすめの作品</h1>
+
+<% if @productions.present? %>
+  <h2><%= current_user.name %>さんへのおすすめ作品です</h2>
+  <% @productions.group_by(&:category).each do |category, productions| %>
+    <% productions.each do |production| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= production.title %></h5>
+          <p class="card-text">
+            著者: <%= production.author %><br>
+            <%= image_tag production.image_url.presence || 'default_image.jpg' %>
+          </p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% else %>
+  <p><%= current_user.name %>さんへのおすすめの作品がありません。</p>
+<% end %>
