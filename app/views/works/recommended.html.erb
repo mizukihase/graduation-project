@@ -9,7 +9,11 @@
         <h5 class="card-title"><%= production.title %></h5>
           <p class="card-text">
             著者: <%= production.author %><br>
-            <%= image_tag production.image_url.presence || 'default_image.jpg' %>
+            <% if production.image_url.present? %>
+              <%= image_tag production.image_url %>
+            <% else %>
+              <p>画像なし</p>
+            <% end %>
           </p>
       </div>
     </div>
