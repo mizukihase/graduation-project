@@ -5,6 +5,9 @@ on:
   push:
     branches: [ main ]
 
+env:
+  DATABASE_URL: ${{secrets.OPENAI_ACCESS_TOKEN}}
+
 jobs:
   scan_ruby:
     runs-on: ubuntu-latest
