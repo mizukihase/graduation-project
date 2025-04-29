@@ -1,13 +1,14 @@
-<h1>本一覧</h1>
-<ul>
+<h1 class="text-3xl font-bold mb-6">本一覧</h1>
+
+<ul class="flex flex-wrap gap-6">
   <% @books.each do |book| %>
-    <li>
-      <h3><%= book.title %></h3>
-      <p><%= book.author %></p>
+    <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= book.title %></h3>
+      <p class="text-gray-600 mb-4"><%= book.author %></p>
       <% if book.image_url.present? %>
-        <img src="<%= book.image_url %>" alt="<%= book.title %>の表紙" />
+        <img class="w-32 h-auto object-cover rounded" src="<%= book.image_url %>" alt="<%= book.title %>の表紙" />
       <% else %>
-        <p>画像がありません</p>
+        <p class="text-sm text-gray-400">画像がありません</p>
       <% end %>
     </li>
   <% end %>
