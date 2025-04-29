@@ -1,14 +1,15 @@
-<h1>漫画一覧</h1>
-<ul>
+<h1 class="text-3xl font-bold mb-6">漫画一覧</h1>
+
+<ul class="flex flex-wrap gap-6">
   <% @mangas.each do |manga| %>
-    <li>
-      <h3><%= manga.title %></h3>
-      <p><%= manga.author %></p>
+    <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
+    <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= manga.title %></h3>
+    <p class="text-gray-600 mb-4"><%= manga.author %></p>
       <% if manga.image_url.present? %>
-        <img src="<%= manga.image_url %>" alt="<%= manga.title %>の表紙" />
+        <img class="w-32 h-auto object-cover rounded" src="<%= manga.image_url %>" alt="<%= manga.title %>の表紙" />
       <% else %>
-        <p>画像がありません</p>
-    <% end %>
+        <p class="text-sm text-gray-400" >画像がありません</p>
+      <% end %>
     </li>
   <% end %>
 </ul>
