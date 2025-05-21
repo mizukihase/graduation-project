@@ -58,3 +58,5 @@ gem "devise", "~> 4.9"
 gem "dotenv-rails", "~> 3.1"
 
 gem "ruby-openai"
+
+gem "themoviedb-api"
