@@ -17,6 +17,6 @@ class MangasController < ApplicationController
       production.save
     end
     @q = Production.ransack(params[:q])
-    @mangas = @q.result(distinct: true).where(category: "manga")
+    @mangas = @q.result(distinct: true).where(category: "manga").page params[:page]
   end
 end

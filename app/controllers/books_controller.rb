@@ -3,7 +3,7 @@ class BooksController < ApplicationController
 
   def index
     # Google Books APIから書籍データを取得
-    books_data = GoogleBooksApi.fetch_books("subject:-manga", 40)
+    books_data = GoogleBooksApi.fetch_books("subject:-manga", 20)
 
     books_data.each do |book_data|
       category = "other"
@@ -18,6 +18,6 @@ class BooksController < ApplicationController
       production.save
     end
     @q = Production.ransack(params[:q])
-    @books = @q.result(distinct: true).where(category: "other")
+    @books = @q.result(distinct: true).where(category: "other").page params[:page]
   end
 end

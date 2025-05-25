@@ -62,3 +62,5 @@ gem "ruby-openai"
 gem "themoviedb-api"
 
 gem "ransack"
+
+gem "kaminari"

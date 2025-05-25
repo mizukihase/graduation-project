@@ -24,6 +24,6 @@ class MoviesController < ApplicationController
       production.save
     end
     @q = Production.ransack(params[:q])
-    @movies = @q.result(distinct: true).where(category: "movie")
+    @movies = @q.result(distinct: true).where(category: "movie").page params[:page]
   end
 end

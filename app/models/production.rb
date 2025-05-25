@@ -19,4 +19,5 @@ class Production < ApplicationRecord
   has_many :users, through: :user_productions
 
   validates :external_id, presence: true, uniqueness: true
+  paginates_per 10
 end
