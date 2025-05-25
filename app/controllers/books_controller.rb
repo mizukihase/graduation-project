@@ -17,6 +17,7 @@ class BooksController < ApplicationController
       production.category = category
       production.save
     end
-    @books = Production.where(category: "other")
+    @q = Production.ransack(params[:q])
+    @books = @q.result(distinct: true).where(category: "other").page params[:page]
   end
 end

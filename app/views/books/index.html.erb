@@ -1,5 +1,5 @@
 <h1 class="text-3xl font-bold mb-6">本一覧</h1>
-
+<%= render 'search_form', q: @q %>
 <ul class="flex flex-wrap gap-6">
   <% @books.each do |book| %>
     <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
@@ -13,3 +13,4 @@
     </li>
   <% end %>
 </ul>
+<%= paginate @books %>
