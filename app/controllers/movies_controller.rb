@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
       production.author = director_name
       production.save
     end
-
-    @movies = Production.where(category: "movie")
+    @q = Production.ransack(params[:q])
+    @movies = @q.result(distinct: true).where(category: "movie")
   end
 end

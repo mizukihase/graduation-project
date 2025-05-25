@@ -16,6 +16,7 @@ class MangasController < ApplicationController
       production.category = category
       production.save
     end
-    @mangas = Production.where(category: "manga")
+    @q = Production.ransack(params[:q])
+    @mangas = @q.result(distinct: true).where(category: "manga")
   end
 end
