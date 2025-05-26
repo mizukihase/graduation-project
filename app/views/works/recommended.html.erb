@@ -3,7 +3,6 @@
 <% if @productions.present? %>
   <% @productions.group_by(&:category).each do |category, productions| %>
     <section class="mb-8">
-      <h2 class="text-lg font-bold mb-2">ジャンル：<%= category %></h2>
       <ul class="flex flex-wrap gap-6 list-none p-0">
         <% productions.each do |production| %>
           <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
@@ -28,3 +27,6 @@
 <% else %>
   <p class="text-3xl font-bold mb-6"><%= current_user.name %>さんへのおすすめの作品がありません。</p>
 <% end %>
+<div class="mt-4">
+  <%= submit_tag "マイリストに登録", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+</div>
