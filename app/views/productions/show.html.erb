@@ -1,0 +1,16 @@
+<h2class="text-xl font-semibold text-gray-800 mb-2"><%= @production.title %></h2>
+<p class="text-gray-600 mb-4"><%= @production.author %></p>
+  <% if @production.image_url.present? %>
+    <img class="w-32 h-auto object-cover rounded" src="<%= @production.image_url %>" alt="<%= @production.title %>の表紙" />
+  <% else %>
+    <p class="text-sm text-gray-400" >画像がありません</p>
+  <% end %>
+<hr>
+
+<h3>コメント一覧</h3>
+<div id="comments">
+  <%= render @production.comments %>
+</div>
+
+<h3>コメント投稿</h3>
+<%= render 'comments/form', production: @production, comment: @comment %>

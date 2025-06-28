@@ -2,9 +2,11 @@
 <%= render 'search_form', q: @q %>
 <%= form_with url: user_productions_path, method: :post do %>
   <ul class="flex flex-wrap gap-6">
-    <% @mangas.each do |manga| %>
+    <% Production.where(category: "manga").each do |manga| %>
       <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
-      <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= manga.title %></h3>
+        <div>
+          <%= link_to manga.title, "/mangas/#{manga.id}" %>
+        </div>
       <p class="text-gray-600 mb-4"><%= manga.author %></p>
         <% if manga.image_url.present? %>
           <img class="w-32 h-auto object-cover rounded" src="<%= manga.image_url %>" alt="<%= manga.title %>の表紙" />

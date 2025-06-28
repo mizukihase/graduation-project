@@ -3,11 +3,12 @@
 
 <%= form_with url: user_productions_path, method: :post do %>
   <ul class="flex flex-wrap gap-6">
-    <% @books.each do |book| %>
+    <% Production.where(category: "book").each do |book| %>
       <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
-        <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= book.title %></h3>
+        <div>
+          <%= link_to book.title, "/books/#{book.id}" %>
+        </div>
         <p class="text-gray-600 mb-4"><%= book.author %></p>
-
         <% if book.image_url.present? %>
           <img class="w-32 h-auto object-cover rounded" src="<%= book.image_url %>" alt="<%= book.title %>の表紙" />
         <% else %>
@@ -28,4 +29,3 @@
 <% end %>
 
 <%= paginate @books %>
-

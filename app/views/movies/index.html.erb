@@ -1,25 +1,31 @@
-<h1 class="text-3xl font-bold mb-6">映画一覧</h1>
+<h1 class="text-3xl font-bold mb-6">本一覧</h1>
 <%= render 'search_form', q: @q %>
+
 <%= form_with url: user_productions_path, method: :post do %>
   <ul class="flex flex-wrap gap-6">
-    <% @movies.each do |movie| %>
+    <% Production.where(category: "movie").each do |movie| %>
       <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
-      <h3 class="text-xl font-semibold text-gray-800 mb-2"><%= movie.title %></h3>
-      <p class="text-gray-600 mb-4"><%= movie.author %></p>
+        <div>
+          <%= link_to movie.title, "/movies/#{movie.id}" %>
+        </div>
+        <p class="text-gray-600 mb-4"><%= movie.author %></p>
         <% if movie.image_url.present? %>
           <img class="w-32 h-auto object-cover rounded" src="<%= movie.image_url %>" alt="<%= movie.title %>の表紙" />
         <% else %>
-          <p class="text-sm text-gray-400" >画像がありません</p>
+          <p class="text-sm text-gray-400">画像がありません</p>
         <% end %>
-          <div class="flex items-center space-x-2">
-            <%= check_box_tag "production_ids[]", movie.id, false, id: "movie_#{movie.id}" %>
-            <%= label_tag "movie_#{movie.id}", "マイリストに追加" %>
-          </div>
+
+        <div class="flex items-center space-x-2 mt-2">
+          <%= check_box_tag "production_ids[]", movie.id, false, id: "movie_#{movie.id}" %>
+          <%= label_tag "movie_#{movie.id}", "マイリストに追加" %>
+        </div>
       </li>
     <% end %>
   </ul>
+
   <div class="mt-4">
     <%= submit_tag "マイリストに登録", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
   </div>
 <% end %>
+
 <%= paginate @movies %>

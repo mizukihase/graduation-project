@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :mangas, only: [ :index ]
   resources :movies, only: [ :index ]
   resources :user_productions, only: [:create, :destroy]
+  get '/mangas/:id', to: 'productions#show'
+  get '/books/:id', to: 'productions#show'
+  get '/movies/:id', to: 'productions#show'
+  resources :productions, only: [:show] do
+    resources :comments, only: [:create]
+  end
   get "recommended_works", to: "works#recommended", as: "recommended_works"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
