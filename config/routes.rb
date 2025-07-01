@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   get 'my_list', to: 'user_productions#index', as: :my_list
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest   
+  get '/contact', to: 'static_pages#contact'
+  get '/terms',   to: 'static_pages#terms'
+  get '/privacy', to: 'static_pages#privacy'
 end

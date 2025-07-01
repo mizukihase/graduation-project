@@ -23,5 +23,13 @@
     <%= render 'layouts/header' %>
     <p class="notice"><%= notice %></p>
     <%= yield %>
+
+    <footer class="p-4 [background-color:#97cdf3] text-white" >
+      <nav>
+        <%= link_to 'お問い合わせ', contact_path, class: 'btn btn-primary' %> |
+        <%= link_to '利用規約', terms_path, class: 'btn btn-primary' %> |
+        <%= link_to 'プライバシーポリシー', privacy_path, class: 'btn btn-primary' %>
+      </nav>
+    </footer>
   </body>
 </html>
