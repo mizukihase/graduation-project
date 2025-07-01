@@ -6,7 +6,7 @@ class BooksController < ApplicationController
     books_data = GoogleBooksApi.fetch_books("subject:-manga", 20)
 
     books_data.each do |book_data|
-      category = "other"
+      category = "book"
       title = book_data["volumeInfo"]["title"]
       image_url = book_data["volumeInfo"]["imageLinks"]&.dig("thumbnail")
 
@@ -18,6 +18,6 @@ class BooksController < ApplicationController
       production.save
     end
     @q = Production.ransack(params[:q])
-    @books = @q.result(distinct: true).where(category: "other").page params[:page]
+    @books = @q.result(distinct: true).where(category: "book").page params[:page]
   end
 end

@@ -17,7 +17,7 @@ class Production < ApplicationRecord
   end
   has_many :user_productions
   has_many :users, through: :user_productions
-
+  has_many :comments, dependent: :destroy
   validates :external_id, presence: true, uniqueness: true
   paginates_per 10
 end

@@ -64,3 +64,5 @@ gem "themoviedb-api"
 gem "ransack"
 
 gem "kaminari"
+
+gem "meta-tags"
