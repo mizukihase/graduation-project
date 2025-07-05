@@ -1,0 +1,5 @@
+<%= form_with(model: [production, comment], local: false, id: "new_comment") do |f| %>
+  <%= f.label :content, "コメント" %>
+  <%= f.text_area :content, class: "border border-gray-300 rounded px-3 py-2" %>
+  <%= f.submit "投稿", class: "px-4 py-2 bg-[#7fc9d2] text-white rounded" %>
+<% end %>
