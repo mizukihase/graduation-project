@@ -20,6 +20,16 @@ class RecommendationService
       出力形式:
       1. 作品名1
     PROMPT
+    mylist_titles = @user.productions.pluck(:title)
+
+    if mylist_titles.any?
+      prompt += "マイリストに追加した作品: #{mylist_titles.join('、')}\n"
+      Rails.logger.info("作品タイトル一覧: #{mylist_titles.join('、')}")
+    else
+      Rails.logger.info("ユーザーID: #{@user.id} はマイリストが空です")
+    end
+
+    prompt += "\n出力形式:\n1. 作品名1"
 
     begin
       response = client.chat(
