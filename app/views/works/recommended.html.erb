@@ -7,17 +7,15 @@
         <% productions.each do |production| %>
           <li class="p-4 border rounded-lg shadow-sm hover:shadow-md transition w-64">
             <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title text-xl font-semibold text-gray-800 mb-2"><%= production.title %></h5>
-                <p class="card-text mb-2 text-sm text-gray-600">
-                  著者: <%= production.author %>
-                </p>
-                <% if production.image_url.present? %>
-                  <%= image_tag production.image_url, class: "w-full h-auto rounded" %>
-                <% else %>
-                  <p class="text-sm text-gray-400">画像がありません</p>
-                <% end %>
-              </div>
+              <h5 class="card-title text-xl font-semibold text-gray-800 mb-2"><%= production.title %></h5>
+              <p class="card-text mb-2 text-sm text-gray-600">
+                著者: <%= production.author %>
+              </p>
+              <% if production.image_url.present? %>
+                <%= image_tag production.image_url, class: "w-full h-auto rounded" %>
+              <% else %>
+                <p class="text-sm text-gray-400">画像がありません</p>
+              <% end %>
             </div>
           </li>
         <% end %>
@@ -27,6 +25,3 @@
 <% else %>
   <p class="text-3xl font-bold mb-6"><%= current_user.name %>さんへのおすすめの作品がありません。</p>
 <% end %>
-<div class="mt-4">
-  <%= submit_tag "マイリストに登録", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
-</div>

@@ -1,6 +1,6 @@
 class Production < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
-    %w[user_productions users]  # あなたのモデルに合わせて関連名を設定してください
+    %w[user_productions users]
   end
   def self.ransackable_attributes(auth_object = nil)
     %w[

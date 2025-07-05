@@ -1,16 +1,25 @@
-<h2class="text-xl font-semibold text-gray-800 mb-2"><%= @production.title %></h2>
-<p class="text-gray-600 mb-4"><%= @production.author %></p>
-  <% if @production.image_url.present? %>
-    <img class="w-32 h-auto object-cover rounded" src="<%= @production.image_url %>" alt="<%= @production.title %>の表紙" />
-  <% else %>
-    <p class="text-sm text-gray-400" >画像がありません</p>
+<div class="max-w-3xl mx-auto mt-10 mb-10">
+  <h2class="text-xl font-semibold text-gray-800 mb-2"><%= @production.title %></h2>
+  <p class="text-gray-600 mb-4"><%= @production.author %></p>
+    <% if @production.image_url.present? %>
+      <img class="w-48 h-auto object-cover rounded" src="<%= @production.image_url %>" alt="<%= @production.title %>の表紙" />
+    <% else %>
+      <p class="text-sm text-gray-400" >画像がありません</p>
+    <% end %>
+  <hr>
+
+  <h3 class="text-lg font-bold mb-2">コメント一覧</h3>
+  <div id="comments">
+    <%= render @production.comments %>
+  </div>
+  <div class="twitter flex justify-end">
+  <%= link_to "https://twitter.com/share?url=#{production_url(@production)}&text=#{ERB::Util.url_encode("おすすめ作品\n\n#{@production.title}")}", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+    <i class="fab fa-twitter text-blue-500 text-xl"></i>
   <% end %>
-<hr>
+  </div>
 
-<h3>コメント一覧</h3>
-<div id="comments">
-  <%= render @production.comments %>
+  <h3 class="text-lg font-bold mb-2">コメント投稿</h3>
+  <div class="mb-10">
+    <%= render 'comments/form', production: @production, comment: @comment %>
+  </div>
 </div>
-
-<h3>コメント投稿</h3>
-<%= render 'comments/form', production: @production, comment: @comment %>
