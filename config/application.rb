@@ -25,5 +25,6 @@ module Myapp
     # config.eager_load_paths << Rails.root.join("extras")
     # lib 配下を自動読み込み対象に追加
     config.autoload_paths += %W[#{config.root}/lib]
+    config.i18n.default_locale = :ja
   end
 end
