@@ -33,7 +33,7 @@
 
       <div class="field">
         <%= f.label :gender, "性別" %><br />
-        <%= f.text_field :gender, class: "border border-gray-300 rounded px-3 py-2 w-full" %>
+        <%= f.select :gender, options_for_select([["選択してください", ""], ["男性", "male"], ["女性", "female"], ["その他", "other"]], f.object.gender), {}, class: "border border-gray-300 rounded px-3 py-2 w-full" %>
       </div>
 
       <div class="form-group">
